@@ -8,3 +8,11 @@ export const addItem = (item) => {
         item: item
     } 
 } 
+
+export const updatePurchaser = (purchaserName, itemId) => { 
+    return { 
+        type: types.updatePurchaser, 
+        purchaser: purchaserName,
+        itemId: itemId
+    }
+}

@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import { addItem } from "../utils/utils"; 
 
 /// API Calls 
+import { updateItem } from "../api-calls/calls"; 
 
 /// Redux Action Types 
 import types  from "../reduxActionTypes"; 
@@ -27,6 +28,9 @@ const rootReducer = (state = initialState, action) => {
                 items: [...state.items, action.item]
             } 
             break; 
+        case types.updatePurchaser: 
+            updateItem(action); 
+            return state; 
         default: 
             return state; 
         } 

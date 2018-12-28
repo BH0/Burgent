@@ -1,6 +1,8 @@
 import React, { Component } from "react"; 
 import { connect, dispatch } from "react-redux"; 
 
+import { updatePurchaser } from "../actions/itemActions.js"; 
+
 class Item extends Component { 
     state = { 
         purchaser: ""
@@ -14,6 +16,7 @@ class Item extends Component {
 
     updatePurchaser = e => { 
         let itemId = this.refs.itemId.value; 
+        this.props.updatePurchaser(this.state.purchaser, itemId); 
     }
 
     render() { 
@@ -35,5 +38,10 @@ class Item extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => {  
+    return { 
+        updatePurchaser: (purchaser, itemId)  => dispatch(updatePurchaser(purchaser, itemId))
+    } 
+} 
 
-export default connect(null, null)(Item); 
+export default connect(null, mapDispatchToProps)(Item); 

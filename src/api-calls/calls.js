@@ -19,7 +19,6 @@ export const postItem = (item) => {
 }  
 
 export const getItems = (receiveItems) => { // receiveItems as in List.props.receiveItems = callback 
-    const ref = firebase.database().ref(); 
     ref.on("value", snapshot => {
         let items = []; 
         snapshot.forEach(item => { 
@@ -30,3 +29,10 @@ export const getItems = (receiveItems) => { // receiveItems as in List.props.rec
         setTimeout(() => { receiveItems(items) }, 1); // Works flawlessly
     }); 
 } 
+
+// put/patch item (should update the item's purchaser [assuming one exists])
+export const updateItem = (updatedItem) => { 
+    firebase.database().ref(updatedItem.itemId.toString()).update({
+        "purchaser": `${updatedItem.purchaser}`
+    });
+}
