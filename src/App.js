@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 // App Components 
+import List from "./components/List"; 
 import AddItem from "./components/AddItem"; 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
           Burgent 
         </h1> 
         <br /> 
+        <List /> 
         <AddItem /> 
       </div>
     );

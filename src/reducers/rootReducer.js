@@ -14,6 +14,12 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => { 
     switch (action.type) { 
+        case types.getItems: 
+            return { 
+                ...state, 
+                items: action.payload
+            }             
+            break; 
         case types.addItem: 
             addItem(state, action.item); 
             return { 

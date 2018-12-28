@@ -17,3 +17,16 @@ const ref = firebase.database().ref();
 export const postItem = (item) => { 
     ref.push(item); 
 }  
+
+export const getItems = (receiveItems) => { // receiveItems as in List.props.receiveItems = callback 
+    const ref = firebase.database().ref(); 
+    ref.on("value", snapshot => {
+        let items = []; 
+        snapshot.forEach(item => { 
+            let itemToPush = item.val();  
+            itemToPush.key = item.key; 
+            items.push(itemToPush); 
+        }); 
+        setTimeout(() => { receiveItems(items) }, 1); // Works flawlessly
+    }); 
+} 
